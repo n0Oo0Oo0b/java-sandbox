@@ -27,7 +27,9 @@ public class SpeedingTicket {
 
     private static TicketType getTicket(int speed, LocalDate birthday) {
         LocalDate todayDate = LocalDate.now();
-        int bonusSpeedLimit = todayDate.equals(birthday) ? 5 : 0;
+        LocalDate thisBirthday = birthday.withYear(todayDate.getYear());
+        int bonusSpeedLimit = todayDate.equals(thisBirthday) ? 5 : 0;
+
         if (speed <= noTicketBaseLimit + bonusSpeedLimit) {
             return TicketType.none;
         } else if (speed <= smallTicketBaseLimit + bonusSpeedLimit) {
