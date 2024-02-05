@@ -7,13 +7,13 @@ interface Operation {
 public class Calculator {
 
     private static Operation get_operation(String op_string) {
-        switch (op_string) {
-            case "add" -> { return ((a, b) -> a + b); }
-            case "subtract" -> { return ((a, b) -> a - b); }
-            case "multiply" -> { return ((a, b) -> a * b); }
-            case "divide" -> { return ((a, b) -> a / b); }
-        }
-        throw new RuntimeException("Invalid operation: " + op_string);
+        return switch (op_string) {
+            case "add" -> (a, b) -> a + b;
+            case "subtract" -> (a, b) -> a - b;
+            case "multiply" -> (a, b) -> a * b;
+            case "divide" -> (a, b) -> a / b;
+            default -> throw new RuntimeException("Invalid operation: " + op_string);
+        };
     }
 
     public static void main(String[] args) {
