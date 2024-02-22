@@ -46,24 +46,32 @@ class HanoiStack extends Vector<Integer> {
 
 public class TowersOfHanoi {
     public static void main(String[] args) {
+        // Parse arguments
         if (args.length != 1) {
             throw new RuntimeException("Invalid command line arguments. Correct usage: TowersOfHanoi [n]");
         }
-        int numberOfDisks = Integer.parseInt(args[0]);
+        int numberOfDisks;
+        try {
+            numberOfDisks = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Invalid number: '" + args[0] + "'");
+        }
+
+        // Initialize stacks
         HanoiStack source = new HanoiStack(numberOfDisks);
         HanoiStack destination = new HanoiStack();
         HanoiStack temporary = new HanoiStack();
 
+        // Run algorithm
         for (int i=0; i<pow(2, numberOfDisks) - 1; i++) {
             switch (i % 3) {
                 case 0 -> HanoiStack.modeDiskBetween(source, numberOfDisks % 2 == 1 ? destination : temporary);
                 case 1 -> HanoiStack.modeDiskBetween(source, numberOfDisks % 2 == 0 ? destination : temporary);
                 case 2 -> HanoiStack.modeDiskBetween(temporary, destination);
             }
+
+            System.out.printf("Step %3d: S %-25s T %-25s D %-25s%n", i+1, source, temporary, destination);
         }
 
-        System.out.println(source);
-        System.out.println(temporary);
-        System.out.println(destination);
     }
 }
