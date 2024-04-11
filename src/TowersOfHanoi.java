@@ -19,7 +19,7 @@ class HanoiStack extends Vector<Integer> {
 
     public void push(int value) {
         if (value > this.peek()) {
-            throw new IllegalArgumentException("Cannot place larger disc on smaller disc");
+            throw new IllegalArgumentException("Cannot place larger disk on smaller disk");
         }
         this.add(value);
     }
@@ -63,7 +63,7 @@ public class TowersOfHanoi {
         HanoiStack temporary = new HanoiStack();
 
         // Run algorithm
-        for (int i=0; i<pow(2, numberOfDisks) - 1; i++) {
+        for (int i=0; i < pow(2, numberOfDisks)-1; i++) {
             switch (i % 3) {
                 case 0 -> HanoiStack.modeDiskBetween(source, numberOfDisks % 2 == 1 ? destination : temporary);
                 case 1 -> HanoiStack.modeDiskBetween(source, numberOfDisks % 2 == 0 ? destination : temporary);
