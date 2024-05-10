@@ -1,7 +1,5 @@
 import java.util.Arrays;
 
-import static java.lang.Math.min;
-
 public class SpiralArray {
     public static void main(String[] args) {
         int arraySize = 5;
