@@ -26,11 +26,12 @@ public class NoTriples {
 
     @SuppressWarnings("PointlessBooleanExpression")
     public static void main(String[] args) {
-        assert noTriples(new int[]{1, 1, 2, 2, 1}) == false;
+        // Compile with -ea flag to make assertions work
+        assert noTriples(new int[]{1, 1, 2, 2, 1}) == true;
         assert noTriples(new int[]{1, 1, 2, 2, 2, 1}) == false;
         assert noTriples(new int[]{1, 1, 1, 2, 2, 2, 1}) == false;
-        System.out.println(noTriples(new int[]{1, 1, 2, 2, 1}));
-        System.out.println(noTriples(new int[]{1, 1, 2, 2, 2, 1}));
-        System.out.println(noTriples(new int[]{1, 1, 1, 2, 2, 2, 1}));
+//        System.out.println(noTriples(new int[]{1, 1, 2, 2, 1}));
+//        System.out.println(noTriples(new int[]{1, 1, 2, 2, 2, 1}));
+//        System.out.println(noTriples(new int[]{1, 1, 1, 2, 2, 2, 1}));
     }
 }

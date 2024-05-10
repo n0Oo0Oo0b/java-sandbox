@@ -2,11 +2,6 @@ import java.util.Arrays;
 
 class WageSum {
 
-    /*
-
-
-     */
-
     public static void main(String[] args) {
         int[][] wages = new int[][]{
                 {2456,2546,2967,3057,2347,2107,2346,3049,3246,3546,5940,3747},
@@ -22,7 +17,10 @@ class WageSum {
     public static int[] calcWages(int[][] wages){
         int[] salary = new int[5];
         for (int i = 0; i < wages.length; i++) {
-            salary[i] = Arrays.stream(wages[i]).sum();
+//            salary[i] = Arrays.stream(wages[i]).sum();
+            for (int j = 0; j < wages[0].length; j++) {
+                salary[i] += wages[i][j];
+            }
         }
         return salary;
     }
